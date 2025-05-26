@@ -19,3 +19,4 @@ Planned features:
 2. Create a backend for the aplication
 3. Add a database
 4. Add logins and accounts
+5. Add support for diferents languages
