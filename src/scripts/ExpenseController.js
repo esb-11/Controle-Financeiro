@@ -16,6 +16,7 @@ pubSub.on("init", init);
 
 function init() {
   pubSub.on("submitted", addExpense);
+  pubSub.on("paidStatusChanged", changePaidStatus);
 }
 
 function addExpense(name, value, type) {
@@ -30,10 +31,15 @@ function addExpense(name, value, type) {
   pubSub.emit("listUpdated", expenseList);
 }
 
+function changePaidStatus(id) {
+  const expense = findById(id);
+  expense.paid = !expense.paid;
+}
+
 // TODO
 function editExpense(id, attribute, newValue) {
-  const index = findIndexById(id);
-  expenseList[index][attribute] = newValue;
+  const expense = findById(id);
+  expense[attribute] = newValue;
 }
 
 function deleteExpense(id) {
@@ -41,6 +47,16 @@ function deleteExpense(id) {
   expenseList.splice(index, 1);
 }
 
-function findIndexById(id) {}
+function findById(id) {
+  return expenseList.find((expense) => {
+    return expense.id == id;
+  });
+}
+
+function findIndexById(id) {
+  return expenseList.findIndex((expense) => {
+    return expense.id == id;
+  });
+}
 
 function sortArray() {}

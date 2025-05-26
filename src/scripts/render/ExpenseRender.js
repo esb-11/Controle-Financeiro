@@ -1,9 +1,3 @@
-/*
-  TODO:
-  - Change the paid attribute on the ExpenseController module, a render module should not manipulate the attributes of a Expense object
-*/
-
-
 import { pubSub } from "../PubSub.js";
 
 const tableBody = document.querySelector("#finance-table > tbody");
@@ -27,7 +21,7 @@ function makeTableElement(item) {
   const template = expenseTemplate.content.cloneNode(true);
   const tr = template.querySelector("tr");;
 
-  setPaidButton(item, document.querySelector("input"));
+  setPaidButton(item, tr.querySelector("input"));
   tr.querySelector(".expense-name").innerText = item.name;
   tr.querySelector(".expense-value").innerText = item.value;
   tr.querySelector(".expense-type").innerText = item.type;
@@ -41,7 +35,7 @@ function makeTableElement(item) {
 function setPaidButton(expense, checkbox) {
   checkbox.checked = expense.paid;
   checkbox.addEventListener("change", (e) => {
-    expense.paid = checkbox.checked;
+    pubSub.emit("paidStatusChanged", expense.id);
   });
 }
 
