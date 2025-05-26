@@ -1,6 +1,6 @@
 /*
   TODO:
-  - Make expense objects properties private, all manipulation of the objects properties should happen in this module.
+  - Make expense objects properties private.
 */
 
 const financeTypes = [
@@ -34,7 +34,8 @@ function expenseFactory(name, value, type) {
   return { id, name, value: valueParsed, type, paid };
 }
 
-// Represent the monetary value of a expense as an integer variable. The value is represented in cents, for example, if the variable holds the value 1, that would be $ 0.01 or if it holds the value 100, that would be $ 1
+// Represent the monetary value of a expense as an integer variable. 
+// The value is represented in cents, for example, if the variable holds the value 1, that would be $ 0.01 or if it holds the value 100, that would be $ 1
 function parsevalue(value) {
   let valueString = "";
   for (const char of value) {
