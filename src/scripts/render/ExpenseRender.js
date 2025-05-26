@@ -29,6 +29,11 @@ function makeTableElement(item) {
   tr.classList.add(item.paid ? "paid" : "not-paid");
   tr.dataset.id = item.id;
 
+  const deleteButton = tr.querySelector("button.delete-button");
+  deleteButton.addEventListener("click", (e) => {
+    deleteExpense(item);
+  });
+
   return tr;
 }
 
@@ -41,4 +46,8 @@ function setPaidButton(expense, checkbox) {
 
 function  reset() {
   tableBody.innerHTML = "";
+}
+
+function deleteExpense(expense) {
+  pubSub.emit("expenseDeleted", expense.id);
 }

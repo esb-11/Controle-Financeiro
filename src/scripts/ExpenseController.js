@@ -6,7 +6,6 @@
   - Implement findIndexById function for expenseList
 */
 
-
 import { expenseFactory } from "./ExpenseFactory.js";
 import { pubSub } from "./PubSub.js";
 
@@ -17,6 +16,7 @@ pubSub.on("init", init);
 function init() {
   pubSub.on("submitted", addExpense);
   pubSub.on("paidStatusChanged", changePaidStatus);
+  pubSub.on("expenseDeleted", deleteExpense);
 }
 
 function addExpense(name, value, type) {
@@ -34,6 +34,7 @@ function addExpense(name, value, type) {
 function changePaidStatus(id) {
   const expense = findById(id);
   expense.paid = !expense.paid;
+  pubSub.emit("listUpdated", expenseList);
 }
 
 // TODO
@@ -43,8 +44,9 @@ function editExpense(id, attribute, newValue) {
 }
 
 function deleteExpense(id) {
-  const index = findIndexById(array, id);
+  const index = findIndexById(id);
   expenseList.splice(index, 1);
+  pubSub.emit("listUpdated", expenseList);
 }
 
 function findById(id) {
