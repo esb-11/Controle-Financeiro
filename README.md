@@ -7,8 +7,8 @@ Features:
 * Show the total month expense, how much has been paid and what is left to pay.
 
 Planned features:
-* Receive notification when a payment due date is close
-* Acces your Personal Finances from anywhere with a login
+* Receive notifications when a payment due date is close
+* Access your Personal Finances from anywhere
 
 ## Installation
 1. Clone this repository
