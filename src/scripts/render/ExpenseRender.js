@@ -3,11 +3,6 @@ import { pubSub } from "../PubSub.js";
 const tableBody = document.querySelector("#finance-table > tbody");
 const expenseTemplate = document.querySelector("#expense-template");
 
-pubSub.on("init", init);
-
-function init() {
-  pubSub.on("listUpdated", renderList);
-}
 
 function renderList(array) {
   reset();
@@ -61,3 +56,5 @@ function makeDate(date) {
 
   return date.toLocaleDateString("pt-BR", options);
 }
+
+export { renderList };

@@ -1,16 +1,8 @@
-import { pubSub } from "../PubSub.js";
-
 const totalElement = document.querySelector("#total");
 const totalPendingElement = document.querySelector("#total-pending");
 const totalPaidElement = document.querySelector("#total-paid");
 
-pubSub.on("init", init);
-
-function init() {
-  pubSub.on("listUpdated", updateTotal);
-}
-
-function updateTotal(expenseList) {
+function renderTotal(expenseList) {
   const total = getTotal(expenseList);
   totalElement.innerText = total;
 
@@ -38,3 +30,5 @@ function getTotalPaid(expenseList) {
     return total + (expense.paid ? expense.value : 0);
   }, 0);
 }
+
+export { renderTotal };
