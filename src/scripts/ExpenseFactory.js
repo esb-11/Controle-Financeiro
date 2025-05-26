@@ -10,7 +10,7 @@ const financeTypes = [
   "adicional",
 ];
 
-function expenseFactory(name, value, type) {
+function expenseFactory(name, value, type, date) {
   if (!financeTypes.includes(type)) {
     console.log(`${type} is not a valid expense type`);
     return;
@@ -29,9 +29,12 @@ function expenseFactory(name, value, type) {
   }
   
   let paid = false;
+
+  const dueDate = date ? new Date(date.concat("T00:00")) : new Date();
+
   const id = crypto.randomUUID();
   
-  return { id, name, value: valueParsed, type, paid };
+  return { id, name, value: valueParsed, type, paid, dueDate };
 }
 
 // Represent the monetary value of a expense as an integer variable. 

@@ -17,6 +17,9 @@
             <label for="value">
                 <input type="number" name="value" id="value" placeholder="Valor">
             </label>
+            <label for="due-date">
+                <input type="date" name="due-date" id="due-date">
+            </label>
             <label for="type">
                 <select name="type" id="type">
                     <option value="fixo">Fixo</option>
@@ -32,6 +35,7 @@
         <table id="finance-table">
             <thead>
                 <th>Pago</th>
+                <th>Data</th>
                 <th>Nome</th>
                 <th>Valor</th>
                 <th>Tipo</th>
@@ -49,6 +53,7 @@
             <td>
                 <input type="checkbox">
             </td>
+            <td class="due-date"></td>
             <td class="expense-name"></td>
             <td class="expense-value"></td>
             <td class="expense-type"></td>

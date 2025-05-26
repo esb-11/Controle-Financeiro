@@ -22,6 +22,7 @@ function makeTableElement(item) {
   const tr = template.querySelector("tr");;
 
   setPaidButton(item, tr.querySelector("input"));
+  tr.querySelector(".due-date").innerText = makeDate(item.dueDate);
   tr.querySelector(".expense-name").innerText = item.name;
   tr.querySelector(".expense-value").innerText = item.value;
   tr.querySelector(".expense-type").innerText = item.type;
@@ -50,4 +51,13 @@ function  reset() {
 
 function deleteExpense(expense) {
   pubSub.emit("expenseDeleted", expense.id);
+}
+
+function makeDate(date) {
+  const options = {
+    month: "numeric",
+    day: "numeric",
+  };
+
+  return date.toLocaleDateString("pt-BR", options);
 }

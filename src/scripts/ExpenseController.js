@@ -19,8 +19,8 @@ function init() {
   pubSub.on("expenseDeleted", deleteExpense);
 }
 
-function addExpense(name, value, type) {
-  const expense = expenseFactory(name, value, type);
+function addExpense(name, value, type, date) {
+  const expense = expenseFactory(name, value, type, date);
 
   if (!expense) {
     return;
