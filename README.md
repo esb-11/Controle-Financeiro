@@ -16,7 +16,7 @@ Planned features:
 
 ## To-Do
 1. Add npm and webpack to the project
-2. Create a backend for the aplication
+2. Divide the logic between backend and frontend
 3. Add a database
 4. Add logins and accounts
 5. Add support for different languages
