@@ -2,33 +2,25 @@ const totalElement = document.querySelector("#total");
 const totalPendingElement = document.querySelector("#total-pending");
 const totalPaidElement = document.querySelector("#total-paid");
 
-function renderTotal(expenseList) {
-  const total = getTotal(expenseList);
+let total = 0;
+let totalPending = 0;
+let totalPaid = 0;
+
+function addTotal(expense) {
+  total += expense.value;
   totalElement.innerText = total;
 
-  const totalPending = getTotalPending(expenseList);
-  totalPendingElement.innerText = totalPending;
-
-  const totalPaid = getTotalPaid(expenseList);
+  totalPaid += expense.paid ? expense.value : 0;
   totalPaidElement.innerText = totalPaid;
+
+  totalPending += expense.paid ? 0 : expense.value;
+  totalPendingElement.innerText = totalPending;
 }
 
-function getTotal(expenseList) {
-  return expenseList.reduce((total, expense, index, array) => {
-    return total + expense.value;
-  }, 0);
+function resetTotal() {
+  total = 0;
+  totalPending = 0;
+  totalPaid = 0;
 }
 
-function getTotalPending(expenseList) {
-  return expenseList.reduce((total, expense, index, array) => {
-    return total + (expense.paid ? 0 : expense.value);
-  }, 0);
-}
-
-function getTotalPaid(expenseList) {
-  return expenseList.reduce((total, expense, index, array) => {
-    return total + (expense.paid ? expense.value : 0);
-  }, 0);
-}
-
-export { renderTotal };
+export { addTotal, resetTotal };

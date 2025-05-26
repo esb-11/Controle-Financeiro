@@ -1,23 +1,16 @@
 import { pubSub } from "../PubSub.js";
+import { currentMonth } from "./MonthFilter.js";
 
 const tableBody = document.querySelector("#finance-table > tbody");
 const expenseTemplate = document.querySelector("#expense-template");
 
-
-function renderList(array) {
-  reset();
-  array.forEach((item) => {
-    const tableElement = makeTableElement(item);
-    tableBody.appendChild(tableElement);
-  });
-}
-
 function makeTableElement(item) {
+  if (currentMonth >= 0 && item.date.getMonth() != currentMonth) return;
   const template = expenseTemplate.content.cloneNode(true);
   const tr = template.querySelector("tr");;
 
   setPaidButton(item, tr.querySelector("input"));
-  tr.querySelector(".due-date").innerText = makeDate(item.dueDate);
+  tr.querySelector(".due-date").innerText = makeDate(item.date);
   tr.querySelector(".expense-name").innerText = item.name;
   tr.querySelector(".expense-value").innerText = item.value;
   tr.querySelector(".expense-type").innerText = item.type;
@@ -30,7 +23,7 @@ function makeTableElement(item) {
     deleteExpense(item);
   });
 
-  return tr;
+  tableBody.appendChild(tr);
 }
 
 function setPaidButton(expense, checkbox) {
@@ -40,7 +33,7 @@ function setPaidButton(expense, checkbox) {
   });
 }
 
-function  reset() {
+function  resetExpensesTable() {
   tableBody.innerHTML = "";
 }
 
@@ -57,4 +50,4 @@ function makeDate(date) {
   return date.toLocaleDateString("pt-BR", options);
 }
 
-export { renderList };
+export { makeTableElement, resetExpensesTable };

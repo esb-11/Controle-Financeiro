@@ -17,6 +17,11 @@ function init() {
   pubSub.on("submitted", addExpense);
   pubSub.on("paidStatusChanged", changePaidStatus);
   pubSub.on("expenseDeleted", deleteExpense);
+  pubSub.on("sendExpensesList", sendExpensesList);
+}
+
+function sendExpensesList() {
+  pubSub.emit("listUpdated", expenseList);
 }
 
 function addExpense(name, value, type, date) {
@@ -37,7 +42,6 @@ function changePaidStatus(id) {
   pubSub.emit("listUpdated", expenseList);
 }
 
-// TODO
 function editExpense(id, attribute, newValue) {
   const expense = findById(id);
   expense[attribute] = newValue;
