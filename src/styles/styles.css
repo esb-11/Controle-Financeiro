@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  display: grid;
+  grid-template-rows: 1fr 23fr 0.5fr;
+}
+
+main {
+  padding: 3%;
+}
+
+#finance-container {
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

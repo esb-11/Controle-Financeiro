@@ -1,11 +1,3 @@
-/*
-  TODO:
-  - Implement editExpense function
-  - Implement deleteExpense function
-  - Implement sortArray function to expenseList
-  - Implement findIndexById function for expenseList
-*/
-
 import { expenseFactory } from "./ExpenseFactory.js";
 import { pubSub } from "./PubSub.js";
 

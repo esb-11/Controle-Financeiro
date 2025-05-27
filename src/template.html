@@ -8,49 +8,62 @@
     <script src="./index.js" type="module" defer></script>
   </head>
   <body>
-    <div id="finance-container">
+    <header>Controle Financceiro</header>
+
+    <main>
+      <div id="finance-container">
         <div id="months-container">
-            <button class="all-months-button">Todos</button>
-            <div id="filter-buttons"></div>
+          <button class="all-months-button">Todos</button>
+          <div id="filter-buttons"></div>
         </div>
-      <form id="finance-form">
-        <label for="name">
-          <input type="text" name="name" id="name" placeholder="Nome" />
-        </label>
-        <label for="value">
-          <input type="number" name="value" id="value" placeholder="Valor" />
-        </label>
-        <label for="due-date">
-          <input type="date" name="due-date" id="due-date" />
-        </label>
-        <label for="type">
-          <select name="type" id="type">
-            <option value="fixo">Fixo</option>
-            <option value="variavel">Variavel</option>
-            <option value="extra">Extra</option>
-            <option value="adicional">Adicional</option>
-          </select>
-        </label>
-        <button>Adicionar</button>
-      </form>
 
-      <table id="finance-table">
-        <thead>
-          <th>Pago</th>
-          <th>Vencimento</th>
-          <th>Nome</th>
-          <th>Valor</th>
-          <th>Tipo</th>
-        </thead>
-        <tbody></tbody>
-      </table>
+        <div>
+          <form id="finance-form">
+            <label for="name">
+              <input type="text" name="name" id="name" placeholder="Nome" />
+            </label>
+            <label for="value">
+              <input
+                type="number"
+                name="value"
+                id="value"
+                placeholder="Valor"
+              />
+            </label>
+            <label for="due-date">
+              <input type="date" name="due-date" id="due-date" />
+            </label>
+            <label for="type">
+              <select name="type" id="type">
+                <option value="fixo">Fixo</option>
+                <option value="variavel">Variavel</option>
+                <option value="extra">Extra</option>
+                <option value="adicional">Adicional</option>
+              </select>
+            </label>
+            <button>Adicionar</button>
+          </form>
 
-      <div class="total-info">
-        <span>Total: R$ <span id="total"></span></span>
-        <span>Pago: R$ <span id="total-paid"></span></span>
-        <span>Faltando: R$ <span id="total-pending"></span></span>
+          <table id="finance-table">
+            <thead>
+              <th>Pago</th>
+              <th>Vencimento</th>
+              <th>Nome</th>
+              <th>Valor</th>
+              <th>Tipo</th>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div class="total-info">
+            <span>Total: R$ <span id="total"></span></span>
+            <span>Pago: R$ <span id="total-paid"></span></span>
+            <span>Faltando: R$ <span id="total-pending"></span></span>
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
+
+    <footer>ESB-11</footer>
 
     <template id="expense-template">
       <tr>

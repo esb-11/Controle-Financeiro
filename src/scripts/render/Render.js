@@ -12,19 +12,18 @@ function init() {
 
 function render(expenseList) {
   reset();
+  sortByDate(expenseList);
   for (const expense of expenseList) {
     makeTableElement(expense);
     makeMonthButton(expense.date);
     addTotal(expense);
   }
-
-  sortByDate(expenseList);
 }
-
-function sortByDate(array) {}
 
 function reset() {
   resetExpensesTable();
   resetMonths();
   resetTotal();
 }
+
+function sortByDate(array) {}
