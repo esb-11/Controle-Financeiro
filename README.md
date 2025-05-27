@@ -12,7 +12,7 @@ Planned features:
 
 ## Installation
 1. Clone this repository
-2. Open index.html
+2. Open template.html
 
 ## To-Do
 1. Add npm and webpack to the project
